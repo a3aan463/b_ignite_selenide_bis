@@ -12,6 +12,7 @@ Opdracht selenide
 * BisTest_2 genereert een bisnummer zonder geboortedatum
 * BisTest_3 genereert een geldige bisCode
 * BisTest_4 genereert meerdere bisCodes, bisCodes worden gecontroleerd door het clipboard te gebruiken (knop "copy")
+* De Story is niet af maar ik ben gestopt omdat ik denk dat duidelijk is dat ik geautomatiseerde tests kan maken. Ik zou normaal een laagje toevoegen zoals bijv. Cucumber omdat dat meer rapportage mogelijkheden geeft waardoor ook voor een leek duidelijk is wat er tijdens de test is uitgevoerd. Binnen het team zou ik dit als een opzetje presenteren om daarna samen het testframework verder te definieren.
 
 Bevindingen:
 

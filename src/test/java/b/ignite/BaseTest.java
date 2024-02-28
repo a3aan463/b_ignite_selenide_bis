@@ -19,7 +19,8 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
 public class BaseTest {
-	WebDriver driver;
+
+    WebDriver driver;
     JavascriptExecutor executor = (JavascriptExecutor) driver;
 	//protected ThreadLocal<RemoteWebDriver> threadDriver = null;
     @BeforeAll

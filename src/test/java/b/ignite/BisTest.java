@@ -19,7 +19,6 @@ public class BisTest extends Base {
 
     @Test
     public void BisTest_1() throws InterruptedException {
-        driver = Base.driver;
         home = new HomePage();
         bis = new BisPage();
         //Gender Y, Birthday Y, date system, amount 1
@@ -68,9 +67,13 @@ public class BisTest extends Base {
 
         bis.enter_amount("1");
 
-        Thread.sleep(5000);
+        Thread.sleep(1000);
 
-        if($(byXpath("//button[@id='/bis-generate-button']")).isEnabled()) {
+        //$(byXpath("//button[@id='/bsn-header-button']")).scrollIntoView(true);
+        $(byXpath("//button[@id='/bis-generate-button']")).scrollIntoView(true);
+        Thread.sleep(500);
+        if($(byXpath("//button[@id='/bis-generate-button']")).scrollIntoView(true).isEnabled()) {
+            Thread.sleep(500);
             $(byXpath("//button[@id='/bis-generate-button']")).click();
         }
         String bisCode = bis.getBisCode();

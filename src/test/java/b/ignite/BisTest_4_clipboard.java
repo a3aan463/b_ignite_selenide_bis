@@ -24,7 +24,7 @@ public class BisTest_4_clipboard extends Base {
 
     @Test
     public void BisTest_4_clipboard() throws InterruptedException, IOException, UnsupportedFlavorException {
-        driver = Base.driver;
+        //driver = Base.driver;
         home = new HomePage();
         bis = new BisPage();
         //Gender Y, Birthday Y, date system, amount 1
@@ -72,9 +72,12 @@ public class BisTest_4_clipboard extends Base {
 
         bis.enter_amount("2");
 
-        Thread.sleep(5000);
+        Thread.sleep(1000);
 
-        if ($(byXpath("//button[@id='/bis-generate-button']")).isEnabled()) {
+        //$(byXpath("//button[@id='/bsn-header-button']")).scrollIntoView(true);
+        $(byXpath("//button[@id='/bis-generate-button']")).scrollIntoView(true);
+        Thread.sleep(500);
+        if ($(byXpath("//button[@id='/bis-generate-button']")).scrollIntoView(true).isEnabled()) {
             $(byXpath("//button[@id='/bis-generate-button']")).click();
         }
         String bisCode = bis.getBisCode();

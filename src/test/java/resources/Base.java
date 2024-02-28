@@ -8,6 +8,7 @@ import java.util.concurrent.TimeUnit;
 
 import org.apache.commons.io.FileUtils;
 import org.junit.jupiter.api.BeforeAll;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -15,25 +16,29 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.testng.annotations.BeforeTest;
 
 public class Base {
     public static WebDriver driver;
-    public Properties prop;
+    public static Properties prop;
 
     //Method to initialize driver
 
-    public WebDriver initializeDrvier() throws IOException {
+    //@BeforeAll
+    public static WebDriver initializeDrvier() throws IOException {
 
         prop=new Properties();
-        FileInputStream fs=new FileInputStream("C:\\Users\\Sarif\\MavenExample\\src\\main\\java\\resources\\data.properties");
+        FileInputStream fs=new FileInputStream("src/test/java/resources/data.properties");
         prop.load(fs);
         String browserName=prop.getProperty("browser");
 
         if (browserName.equalsIgnoreCase("chrome")) {
 
-            WebDriverManager.chromedriver().setup();
+            //WebDriverManager.chromedriver().setup();
             //System.setProperty("webdriver.chrome.driver", "C:\\Users\\SeleniumWork\\chromedriver.exe");
             driver=new ChromeDriver();
+            driver.manage().window().maximize();
+            //JavascriptExecutor jse = (JavascriptExecutor) driver;
         }
 
         else if (browserName.equalsIgnoreCase("firefox")) {
@@ -64,5 +69,9 @@ public class Base {
 
         //FileUtils.copyFile(srcFile, new File("C://screenshotTest//" + result + "screenshot.png"));
 
+    }
+
+    public static WebDriver getDriver() {
+        return driver;
     }
 }

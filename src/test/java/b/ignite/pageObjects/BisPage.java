@@ -14,6 +14,7 @@ public class BisPage {
     public void verifyBisCode(String bisCode) {
         //String bisCode = bis.getBisCode();
         System.out.println("bisCode: " + bisCode );
+
         String code = bisCode.substring(0, 9);
         System.out.println("code: " + code );
         int codeInt = Integer.parseInt(code);
@@ -26,6 +27,26 @@ public class BisPage {
         System.out.println("controlNumber: " + controlNumber );
         Integer controlNumberInt = Integer.parseInt(controlNumber);
         assertEquals(controlNumberInt, controlNr);
+
+    }
+
+    public void verifyBisCodeMonthOfBirthGenderNo(String bisCode) {
+        System.out.println("bisCode: " + bisCode );
+
+        String monthStr = bisCode.substring(2, 4);
+        System.out.println("code: " + monthStr );
+        int codeInt = Integer.parseInt(monthStr);
+        assertEquals(codeInt, 20);
+
+    }
+
+    public void verifyBisCodeMonthOfBirthGenderYes(String bisCode) {
+        System.out.println("bisCode: " + bisCode );
+
+        String monthStr = bisCode.substring(2, 4);
+        System.out.println("code: " + monthStr );
+        int codeInt = Integer.parseInt(monthStr);
+        assertEquals(codeInt, 42);
 
     }
 
@@ -60,7 +81,7 @@ public class BisPage {
     }
 
     public String getBisCode() {
-        String bisCode = $(byXpath("//pre[@id='bis-text']")).getText();
+        String bisCode = $(byXpath("//pre[@id='bis-text']")).scrollIntoView(true).getText();
         return bisCode;
     }
 }

@@ -3,11 +3,17 @@ package b.ignite;
 import com.codeborne.selenide.SelenideElement;
 import b.ignite.pageObjects.BisPage;
 import b.ignite.pageObjects.HomePage;
+import io.github.bonigarcia.wdm.WebDriverManager;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.Test;
 import resources.Base;
 
+import java.io.IOException;
+
 import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.$;
+
 
 
 public class BisTest_2 extends Base {
@@ -17,8 +23,8 @@ public class BisTest_2 extends Base {
     String p_bis_text = "This action returns a Belgian unique identifier for people without the Belgian nationality, but still have a relation with the Belgian government.";
 
     @Test
-    public void BisTest_2() throws InterruptedException {
-        driver = Base.driver;
+    public void BisTest_2() throws InterruptedException, IOException {
+        //driver = Base.initializeDrvier();
         home = new HomePage();
         bis = new BisPage();
         //Gender Y, Birthday Y, date system, amount 1
@@ -68,12 +74,21 @@ public class BisTest_2 extends Base {
 
         bis.enter_amount("1");
 
-        Thread.sleep(5000);
+        Thread.sleep(1000);
 
-        if($(byXpath("//button[@id='/bis-generate-button']")).isEnabled()) {
+
+        //JavascriptExecutor jse = (JavascriptExecutor) driver;
+        //jse.executeScript("window.scrollBy(0,1000)");
+
+        //$(byXpath("//button[@id='/bsn-header-button']")).scrollIntoView(true);
+        $(byXpath("//button[@id='/bis-generate-button']")).scrollIntoView(true);
+        Thread.sleep(500);
+        if($(byXpath("//button[@id='/bis-generate-button']")).scrollIntoView(true).isEnabled()) {
+            Thread.sleep(500);
             $(byXpath("//button[@id='/bis-generate-button']")).click();
         }
         String bisCode = bis.getBisCode();
+        bis.verifyBisCodeMonthOfBirthGenderNo(bisCode);
         bis.verifyBisCode(bisCode);
 
         }

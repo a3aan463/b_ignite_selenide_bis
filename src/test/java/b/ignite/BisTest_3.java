@@ -6,6 +6,8 @@ import b.ignite.pageObjects.HomePage;
 import org.testng.annotations.Test;
 import resources.Base;
 
+import java.io.IOException;
+
 import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.$;
 
@@ -17,8 +19,8 @@ public class BisTest_3 extends Base {
     String p_bis_text = "This action returns a Belgian unique identifier for people without the Belgian nationality, but still have a relation with the Belgian government.";
 
     @Test
-    public void BisTest_3() throws InterruptedException {
-        driver = Base.driver;
+    public void BisTest_3() throws InterruptedException, IOException {
+        //driver = Base.initializeDrvier();
         home = new HomePage();
         bis = new BisPage();
         //Gender Y, Birthday Y, date system, amount 1
@@ -68,12 +70,16 @@ public class BisTest_3 extends Base {
 
         bis.enter_amount("1");
 
-        Thread.sleep(5000);
+        Thread.sleep(1000);
 
-        if($(byXpath("//button[@id='/bis-generate-button']")).isEnabled()) {
+        //$(byXpath("//button[@id='/bsn-header-button']")).scrollIntoView(true);
+        $(byXpath("//button[@id='/bis-generate-button']")).scrollIntoView(true);
+        Thread.sleep(500);
+        if($(byXpath("//button[@id='/bis-generate-button']")).scrollIntoView(true).isEnabled()) {
             $(byXpath("//button[@id='/bis-generate-button']")).click();
         }
         String bisCode = bis.getBisCode();
+        bis.verifyBisCodeMonthOfBirthGenderYes(bisCode);
         bis.verifyBisCode(bisCode);
 
         }
