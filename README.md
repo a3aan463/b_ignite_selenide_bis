@@ -18,3 +18,4 @@ Bevindingen:
 
 * Validatie op geboortedatum ontbreekt waardoor een nummer gegenereerd wordt dat niet geldig/valide is
 * Bij meer dan 2 te genereren nummers worden er ongeldige nummers gegenereerd
+* Nu alleen maar ongeldige nummers???
