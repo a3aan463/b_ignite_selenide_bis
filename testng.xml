@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Suite">
+
+    <listeners>
+        <listener class-name="b.ignite.Listeners"/>
+        <listener class-name="resources.ExtentReporterNG"/>
+    </listeners>
+
+    <test thread-count="5" name="generate bis">
+        <classes>
+            <class name="b.ignite.BisTest"/>
+        </classes>
+    </test> <!-- Test -->
+    <test thread-count="5" name="generate bis no gender, no birthday">
+        <classes>
+            <class name="b.ignite.BisTest_2"/>
+        </classes>
+    </test>
+    <test thread-count="5" name="generate bis gender, birthday before 1970">
+        <classes>
+            <class name="b.ignite.BisTest_3"/>
+        </classes>
+    </test>
+    <test thread-count="5" name="button copy copies the biscode to the clipboard">
+        <classes>
+            <class name="b.ignite.BisTest_4_clipboard"/>
+        </classes>
+    </test>
+
+
+
+
+
+</suite> <!-- Suite -->
