@@ -25,6 +25,7 @@ public class BisTest extends Base {
         Boolean gender = true;
         Boolean birthday = true;
         Integer amount = 1;
+
         home.open();
         String title = "Test Data Generator language";
         home.verifyTitle(title);
