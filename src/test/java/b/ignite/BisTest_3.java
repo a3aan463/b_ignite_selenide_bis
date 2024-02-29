@@ -12,7 +12,7 @@ import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.$;
 
 
-public class BisTest_3 extends Base {
+public class BisTest_3 extends BaseTest {
     HomePage home;
     BisPage bis;
 
@@ -24,8 +24,8 @@ public class BisTest_3 extends Base {
         home = new HomePage();
         bis = new BisPage();
         //Gender Y, Birthday Y, date system, amount 1
-        Boolean gender = true;
-        Boolean birthday = true;
+        boolean gender = true;
+        Boolean birthdayBool = true;
         Integer amount = 1;
         home.open();
         String title = "Test Data Generator language";
@@ -33,49 +33,8 @@ public class BisTest_3 extends Base {
         home.selectBis();
         bis.verifyInfo(p_bis_text);
 
-        SelenideElement gender_yes = $(byXpath("//input[@id='/bis-yes-0']"));
-        String gender_yes_checkedValue = gender_yes.getAttribute("value");
-        boolean gender_yes_checkedValueBool = Boolean.parseBoolean(gender_yes_checkedValue);
-        SelenideElement gender_no = $(byXpath("//input[@id='/bis-no-0']"));
-        String gender_no_checkedValue = gender_no.getAttribute("value");
-        boolean gender_no_checkedValueBool = Boolean.parseBoolean(gender_no_checkedValue);
-        if(gender) {
-            if(gender_yes_checkedValueBool) {
-
-            } else {
-                bis.gender_select_yes();
-            }
-        } else {
-            if(gender_no_checkedValueBool) {
-
-            } else {
-                bis.gender_select_no();
-            }
-        }
-
-
-        SelenideElement birthday_yes = $(byXpath("//input[@id='/bis-yes-1']"));
-        String birthday_yes_checkedValue = birthday_yes.getAttribute("value");
-        boolean birthday_yes_checkedValueBool = Boolean.parseBoolean(birthday_yes_checkedValue);
-        SelenideElement birthday_no = $(byXpath("//input[@id='/bis-no-1']"));
-        String birthday_no_checkedValue = birthday_no.getAttribute("value");
-        boolean birthday_no_checkedValueBool = Boolean.parseBoolean(birthday_no_checkedValue);
-        if(birthday) {
-            if(birthday_yes_checkedValueBool) {
-                bis.enter_date("31101961");
-            } else {
-                bis.birthday_select_yes();
-                bis.enter_date("31101961");
-            }
-        } else {
-            if(birthday_no_checkedValueBool) {
-            } else {
-                bis.birthday_select_no();
-            }
-        }
-
-
-        //bis.enter_date("27022024");
+        bis.enterGender(gender);
+        bis.enterBirthday(birthdayBool, "31101961");
 
         bis.enter_amount("1");
 

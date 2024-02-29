@@ -2,6 +2,7 @@ package b.ignite.pageObjects;
 
 
 import com.codeborne.selenide.Selenide;
+import com.codeborne.selenide.SelenideElement;
 import org.testng.Assert;
 
 import static com.codeborne.selenide.Condition.exactText;
@@ -55,6 +56,64 @@ public class BisPage {
         Thread.sleep(500);
         if ($(byXpath("//button[@id='/bis-generate-button']")).scrollIntoView(true).isEnabled()) {
             $(byXpath("//button[@id='/bis-generate-button']")).click();
+        }
+    }
+
+    public void enterGender(boolean gender) {
+        SelenideElement gender_yes = $(byXpath("//input[@id='/bis-yes-0']"));
+        String gender_yes_checkedValue = gender_yes.getAttribute("value");
+        boolean gender_yes_checkedValueBool = Boolean.parseBoolean(gender_yes_checkedValue);
+        SelenideElement gender_no = $(byXpath("//input[@id='/bis-no-0']"));
+        String gender_no_checkedValue = gender_no.getAttribute("value");
+        boolean gender_no_checkedValueBool = Boolean.parseBoolean(gender_no_checkedValue);
+        if(gender) {
+            if(gender_yes_checkedValueBool) {
+
+            } else {
+                gender_select_yes();
+            }
+        } else {
+            if(gender_no_checkedValueBool) {
+
+            } else {
+                gender_select_no();
+            }
+        }
+    }
+
+    public void enterBirthday(Boolean birthdayBool, String birthdayDate) {
+        SelenideElement birthday_yes = $(byXpath("//input[@id='/bis-yes-1']"));
+        String birthday_yes_checkedValue = birthday_yes.getAttribute("value");
+        boolean birthday_yes_checkedValueBool = Boolean.parseBoolean(birthday_yes_checkedValue);
+        SelenideElement birthday_no = $(byXpath("//input[@id='/bis-no-1']"));
+        String birthday_no_checkedValue = birthday_no.getAttribute("value");
+        boolean birthday_no_checkedValueBool = Boolean.parseBoolean(birthday_no_checkedValue);
+        if(birthdayBool) {
+            if(birthday_yes_checkedValueBool) {
+                enter_date(birthdayDate);
+            } else {
+                birthday_select_yes();
+                enter_date(birthdayDate);
+            }
+        } else {
+            if(birthday_no_checkedValueBool) {
+            } else {
+                birthday_select_no();
+            }
+        }
+    }
+
+    public void enterBirthday(Boolean birthdayBool) {
+        SelenideElement birthday_no = $(byXpath("//input[@id='/bis-no-1']"));
+        String birthday_no_checkedValue = birthday_no.getAttribute("value");
+        boolean birthday_no_checkedValueBool = Boolean.parseBoolean(birthday_no_checkedValue);
+        if(birthdayBool) {
+
+        } else {
+            if(birthday_no_checkedValueBool) {
+            } else {
+                birthday_select_no();
+            }
         }
     }
 

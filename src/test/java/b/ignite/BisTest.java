@@ -11,7 +11,7 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 
 
-public class BisTest extends Base {
+public class BisTest extends BaseTest {
     HomePage home;
     BisPage bis;
 
@@ -22,8 +22,8 @@ public class BisTest extends Base {
         home = new HomePage();
         bis = new BisPage();
         //Gender Y, Birthday Y, date system, amount 1
-        Boolean gender = true;
-        Boolean birthday = true;
+        boolean gender = true;
+        boolean birthdayBool = true;
         Integer amount = 1;
 
         home.open();
@@ -32,35 +32,8 @@ public class BisTest extends Base {
         home.selectBis();
         bis.verifyInfo(p_bis_text);
 
-        SelenideElement gender_yes = $(byXpath("//input[@id='/bis-yes-0']"));
-        SelenideElement gender_no = $(byXpath("//input[@id='/bis-no-0']"));
-        if(gender) {
-            if(gender_yes.isSelected()) {
-
-            } else {
-                bis.gender_select_yes();
-            }
-        } else {
-            if(gender_no.isSelected()) {
-
-            } else {
-                bis.gender_select_no();
-            }
-        }
-
-        SelenideElement birthday_yes = $(byXpath("//input[@id='/bis-yes-1']"));
-        SelenideElement birthday_no = $(byXpath("//input[@id='/bis-yes-1']"));
-        if(birthday) {
-            if(birthday_yes.isSelected()) {
-            } else {
-                bis.birthday_select_yes();
-            }
-        } else {
-            if(birthday_no.isSelected()) {
-            } else {
-                bis.birthday_select_no();
-            }
-        }
+        bis.enterGender(gender);
+        bis.enterBirthday(birthdayBool);
 
         bis.enter_date("27022024");
 
