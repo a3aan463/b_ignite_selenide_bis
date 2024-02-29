@@ -50,7 +50,7 @@ public class BisPage {
 
     }
 
-    public static void generateBisNumber() throws InterruptedException {
+    public  void generateBisNumber() throws InterruptedException {
         $(byXpath("//button[@id='/bis-generate-button']")).scrollIntoView(true);
         Thread.sleep(500);
         if ($(byXpath("//button[@id='/bis-generate-button']")).scrollIntoView(true).isEnabled()) {
