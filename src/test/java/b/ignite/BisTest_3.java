@@ -72,12 +72,7 @@ public class BisTest_3 extends Base {
 
         Thread.sleep(1000);
 
-        //$(byXpath("//button[@id='/bsn-header-button']")).scrollIntoView(true);
-        $(byXpath("//button[@id='/bis-generate-button']")).scrollIntoView(true);
-        Thread.sleep(500);
-        if($(byXpath("//button[@id='/bis-generate-button']")).scrollIntoView(true).isEnabled()) {
-            $(byXpath("//button[@id='/bis-generate-button']")).click();
-        }
+        bis.generateBisNumber();
         String bisCode = bis.getBisCode();
         bis.verifyBisCodeMonthOfBirthGenderYes(bisCode);
         bis.verifyBisCode(bisCode);

@@ -69,17 +69,11 @@ public class BisTest_4_clipboard extends Base {
             }
         }
 
-
         bis.enter_amount("2");
 
         Thread.sleep(1000);
 
-        //$(byXpath("//button[@id='/bsn-header-button']")).scrollIntoView(true);
-        $(byXpath("//button[@id='/bis-generate-button']")).scrollIntoView(true);
-        Thread.sleep(500);
-        if ($(byXpath("//button[@id='/bis-generate-button']")).scrollIntoView(true).isEnabled()) {
-            $(byXpath("//button[@id='/bis-generate-button']")).click();
-        }
+        bis.generateBisNumber();
         String bisCode = bis.getBisCode();
         //bis.verifyBisCode(bisCode);
         bis.copyCode();
@@ -98,7 +92,6 @@ public class BisTest_4_clipboard extends Base {
         System.out.println("copyTxt:" + copyTxt);
         //Object copyText = c.getData(DataFlavor.stringFlavor);
         assertEquals(bisCode, copyTxt);
-
     }
 }
 

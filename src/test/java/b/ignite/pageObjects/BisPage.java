@@ -50,6 +50,14 @@ public class BisPage {
 
     }
 
+    public static void generateBisNumber() throws InterruptedException {
+        $(byXpath("//button[@id='/bis-generate-button']")).scrollIntoView(true);
+        Thread.sleep(500);
+        if ($(byXpath("//button[@id='/bis-generate-button']")).scrollIntoView(true).isEnabled()) {
+            $(byXpath("//button[@id='/bis-generate-button']")).click();
+        }
+    }
+
     public void verifyInfo(String info) {
         $(byXpath("(//div[@aria-labelledby='tab-/bis']//p)[1]")).shouldHave(exactText(info));
     }

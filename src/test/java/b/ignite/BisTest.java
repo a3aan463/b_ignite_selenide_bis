@@ -47,7 +47,6 @@ public class BisTest extends Base {
             }
         }
 
-
         SelenideElement birthday_yes = $(byXpath("//input[@id='/bis-yes-1']"));
         SelenideElement birthday_no = $(byXpath("//input[@id='/bis-yes-1']"));
         if(birthday) {
@@ -62,20 +61,13 @@ public class BisTest extends Base {
             }
         }
 
-
         bis.enter_date("27022024");
 
         bis.enter_amount("1");
 
         Thread.sleep(1000);
 
-        //$(byXpath("//button[@id='/bsn-header-button']")).scrollIntoView(true);
-        $(byXpath("//button[@id='/bis-generate-button']")).scrollIntoView(true);
-        Thread.sleep(500);
-        if($(byXpath("//button[@id='/bis-generate-button']")).scrollIntoView(true).isEnabled()) {
-            Thread.sleep(500);
-            $(byXpath("//button[@id='/bis-generate-button']")).click();
-        }
+        bis.generateBisNumber();
         String bisCode = bis.getBisCode();
         bis.verifyBisCode(bisCode);
 
