@@ -40,13 +40,13 @@ public class BisPage {
 
     }
 
-    public void verifyBisCodeMonthOfBirthGenderYes(String bisCode) {
+    public void verifyBisCodeMonthOfBirthGenderYes(String bisCode, int expectedValue) {
         System.out.println("bisCode: " + bisCode );
 
         String monthStr = bisCode.substring(2, 4);
         System.out.println("code: " + monthStr );
         int codeInt = Integer.parseInt(monthStr);
-        assertEquals(codeInt, 42);
+        assertEquals(codeInt, expectedValue);
 
     }
 

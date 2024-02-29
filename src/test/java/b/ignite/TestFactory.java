@@ -13,9 +13,8 @@ public class TestFactory {
 	{
 		ArrayList<BaseTest> testObjects = new ArrayList<BaseTest> ();
 		
-		testObjects.add(new Feature1());
-		testObjects.add(new Feature2());
-		
+		testObjects.add(new BisTest_4_clipboard());
+
 		return testObjects.toArray();
 	}
 
